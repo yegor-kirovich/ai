@@ -28,8 +28,20 @@ yy_down = a * xx + (b[1] - a * b[0])
 b = model.support_vectors_[-1]
 yy_up = a * xx + (b[1] - a * b[0])
 
-sns.lmplot(y='Sugar', x='Flour', data=recipes, hue='Type', palette='Set1', fit_reg=False, scatter_kws={"s": 70})
 plt.plot(xx, yy, linewidth=2, color='black')
 plt.plot(xx, yy_down, 'k--')
 plt.plot(xx, yy_up, 'k--')
+# plt.show()
+
+
+def predict(flour, sugar):
+    if model.predict([[flour, sugar]]) == 0:
+        print("This is muffin")
+    else:
+        print("This is cupcake")
+
+
+f, s = int(input()), int(input())
+predict(f, s)
+plt.plot(f, s, 'yo', markersize=9)
 plt.show()
